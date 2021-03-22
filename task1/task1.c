@@ -42,7 +42,7 @@ int main(void)
         getinfo(ptrCoins[i]);
     }
 
-    fp = fopen("myfile.txt", "w+");
+    fp = fopen("myfile.txt", "wt+");
     if (fp == NULL)
     {
         perror("Error opening file");
