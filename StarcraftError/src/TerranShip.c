@@ -6,6 +6,7 @@ terranShip* initViking(terranShip *airShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -19,6 +20,7 @@ terranShip* initViking(terranShip *airShip){
     else {
         fprintf(fp,"\ninitViking() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 
     return airShip;
 }
@@ -27,6 +29,7 @@ terranShip* initBattleCrusher(terranShip* airShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -49,6 +52,7 @@ terranShip* vikingAttack(terranShip* tShip,protossShip* pShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -72,6 +76,7 @@ terranShip* BattleCruserAttack(terranShip* tShip,int turnCount){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
