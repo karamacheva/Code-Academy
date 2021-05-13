@@ -6,6 +6,7 @@ int protossTurnProcess(BattleField *battleField){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -51,6 +52,7 @@ int protossTurnProcess(BattleField *battleField){
     else {
         fprintf(fp,"\nprotossTurnProcess() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 
     return 0;
 }
@@ -59,6 +61,7 @@ void terranShipDestroyed(protossShip *protossAirShip,int protossShipId,int terra
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -74,4 +77,5 @@ void terranShipDestroyed(protossShip *protossAirShip,int protossShipId,int terra
     else {
         fprintf(fp,"\nterranShipDestroyed() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 }
