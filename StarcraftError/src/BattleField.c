@@ -6,6 +6,7 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr){
 
   fp = fopen("data.log", "a+");
   if (NULL == fp){
+    perror("Error:");
     fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
   }
 
@@ -17,8 +18,8 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr){
 
     /*проверка при заделяне на памет*/
     if (NULL == airShip){
-      printf("Allocation memory error\n");
-      exit(3);
+      perror("Allocation memory error\n");
+      exit(0);
     }
 
     if (terranFleetStr[i] == 'v'){
@@ -33,7 +34,7 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr){
     }
   }
   if (vectorIsEmpty(&battleField->terranFleet)){
-    printf("Error generating terrain fleet!\n");
+    perror("Error generating terrain fleet!\n");
     exit(1);
   }
 
@@ -43,12 +44,14 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr){
   else {
     fprintf(fp,"\ngenerateTerranFleet() has errno: %d : %s\n", errno, strerror(errno));
   }
+  
 }
 
 void generateProtossFleet(BattleField *battleField, const char *protossFleetStr){
 
   fp = fopen("data.log", "a+");
   if (NULL == fp){
+    perror("Error:");
     fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
   }
 
@@ -60,8 +63,8 @@ void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
 
     /*проверка при заделяне на памет*/
     if (NULL == airShip){
-      printf("Allocation memory error\n");
-      exit(3);
+      perror("Allocation memory error\n");
+      exit(2);
     }
 
     if (protossFleetStr[i] == 'p'){
@@ -76,8 +79,8 @@ void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
     }
   }
   if (vectorIsEmpty(&battleField->protossFleet)){
-    printf("Error generating protoss fleet!\n");
-    exit(2);
+    perror("Error generating protoss fleet!\n");
+    exit(3);
   }
 
   if (errno == 0){
@@ -86,12 +89,14 @@ void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
   else {
     fprintf(fp,"\ngenerateProtossFleet() has errno: %d : %s\n", errno, strerror(errno));
   }
+  
 }
 
 void startBattle(BattleField *battleField){
 
   fp = fopen("data.log", "a+");
   if (NULL == fp){
+    perror("Error:");
     fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
   }
   
@@ -113,17 +118,27 @@ void startBattle(BattleField *battleField){
   else {
     fprintf(fp,"\nstartBattle() has errno: %d : %s\n", errno, strerror(errno));
   }
+  
 }
 
 void deinit(BattleField *battleField){
 
   fp = fopen("data.log", "a+");
   if (NULL == fp){
+    perror("Error:");
     fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
   }
   
   vectorFree(&battleField->protossFleet);
+  if (!vectorIsEmpty(&battleField->protossFleet)){
+    perror("Error:");
+    exit(4);
+  }
   vectorFree(&battleField->terranFleet);
+  if (!vectorIsEmpty(&battleField->terranFleet)){
+    perror("Error:");
+    exit(5);
+  }
 
   if (errno == 0){
     fprintf(fp, "startBattle() success\n");
@@ -131,4 +146,5 @@ void deinit(BattleField *battleField){
   else {
     fprintf(fp,"\nstartBattle() has errno: %d : %s\n", errno, strerror(errno));
   }
+  
 }
