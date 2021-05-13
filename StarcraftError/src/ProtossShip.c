@@ -7,6 +7,7 @@ protossShip *initPhoenix(protossShip *airShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -21,6 +22,7 @@ protossShip *initPhoenix(protossShip *airShip){
     else {
         fprintf(fp,"\ninitPhoenix() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 
     return airShip;
 }
@@ -29,6 +31,7 @@ protossShip *initCarrier(protossShip *airShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -43,6 +46,7 @@ protossShip *initCarrier(protossShip *airShip){
     else {
         fprintf(fp,"\ninitCarrier() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 
     return airShip;
 }
@@ -51,6 +55,7 @@ int carrierInteceptors(protossShip *airShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -66,12 +71,14 @@ int carrierInteceptors(protossShip *airShip){
     else {
         fprintf(fp,"\ncarrierInteceptors() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 }
 
 protossShip *damageTaken(protossShip *pShip,terranShip *tShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
@@ -91,6 +98,7 @@ protossShip *damageTaken(protossShip *pShip,terranShip *tShip){
     else {
         fprintf(fp,"\ndamageTaken() has errno: %d : %s\n", errno, strerror(errno));
     }
+    
 
     return pShip;
 }
@@ -99,6 +107,7 @@ protossShip *regenerateShield(protossShip *pShip){
 
     fp = fopen("data.log", "a+");
     if (NULL == fp){
+        perror("Error:");
         fprintf(fp,"\nerrno: %d : %s\n", errno, strerror(errno));
     }
 
