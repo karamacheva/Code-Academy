@@ -26,6 +26,6 @@ int main(){
     else {
         fprintf(fp,"\nmain() has errno: %d : %s\n", errno, strerror(errno));
     }
-
+    fclose(fp);
     return EXIT_SUCCESS;
 }
